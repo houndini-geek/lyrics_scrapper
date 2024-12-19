@@ -1,4 +1,4 @@
-from tkinter import Tk, ttk, Menu, Text, Frame, Toplevel, Label, Entry, Button, filedialog
+from tkinter import Tk, ttk,Label, Entry, Button
 from lyrics_scrapper import scrape_lyrics
 from threading import Thread
 import time
