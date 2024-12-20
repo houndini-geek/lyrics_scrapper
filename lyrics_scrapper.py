@@ -17,7 +17,7 @@ from colorama import Fore
 
 
 
-def is_match(scraped_name, input_name, threshold=80):
+def is_match(scraped_name, input_name, threshold=70):
     # Check if similarity is above the threshold
     return fuzz.partial_ratio(scraped_name, input_name) > threshold
 
