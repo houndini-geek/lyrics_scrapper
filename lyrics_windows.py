@@ -1,4 +1,7 @@
-from tkinter import Tk, ttk, Menu, Text,Frame,Toplevel,Label,Entry,Button,filedialog
+from tkinter import Tk, ttk, Menu, Text,Frame,filedialog
+import os 
+
+
 
 
 def display_lyrics(lyrics):
@@ -44,3 +47,4 @@ def display_lyrics(lyrics):
 
     root.config(menu=menu_bar)
     root.mainloop()
+
