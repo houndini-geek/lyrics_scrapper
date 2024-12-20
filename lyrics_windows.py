@@ -2,6 +2,11 @@ from tkinter import Tk, ttk, Menu, Text,Frame,filedialog
 import os 
 
 
+# lyrics= {
+#     "track": "father of 4",
+#     "artist": "offset",
+#     "lyrics": "trynna find my soul when i had you"
+# }
 
 
 def display_lyrics(lyrics):
@@ -31,7 +36,7 @@ def display_lyrics(lyrics):
     textarea.insert('1.0',lyrics['lyrics'])
 
     textarea.config(bg="#030c14", foreground='#F1F1F1',
-                    font=('Arial Baltic', 11),
+                    font=('Franklin Gothic Medium', 13),
                     insertbackground='#C1C1C1',padx=4,pady=4)
     textarea.pack(expand=True, fill='both',side='top')
 
