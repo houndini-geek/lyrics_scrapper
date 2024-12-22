@@ -5,11 +5,13 @@ import requests
 # import pywhatkit 
 import time 
 
-
+# Function to check for internet connection 
 def internet_connection():
     try:
+        # Check if the connection is successful
         requests.get('https://google.com')
         return True
+    # If there is a connection error return False
     except requests.ConnectionError:
             return False
 
@@ -40,14 +42,16 @@ def fetch_data():
                 time.sleep(0.5)
             if internet_connection():
              scrape_lyrics(artist_name=artist, track_name=track, lyrics_lang=translation)
+             return
             else:
                messagebox.showwarning(title='Network error',message='Lyrics scraper needs a network connection to work')
                feedback_label.config(text='No network connection')
                print("Lyrics scraper needs a network connection to work")
                return
         finally:
+            # Re-enable the submit button
             submit_btn.after(0,submit_btn.config(state='normal'))
-
+    # Start the thread to fetch data from the web in the background without blocking the UI thread 
     thread = Thread(target=search)
     thread.start()
 
