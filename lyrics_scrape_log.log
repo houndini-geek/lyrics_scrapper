@@ -1,0 +1,22 @@
+2024-12-22 16:48:15,551 - === Starting Lyrics Scraper ===
+2024-12-22 16:48:15,846 - === Opening the Browser ===
+2024-12-22 16:48:42,595 - === Navigating to Musixmatch ===
+2024-12-22 16:48:59,118 - === Clicking on the 'See All' button ===
+2024-12-22 16:49:04,617 - === Finding Track Cards ===
+2024-12-22 16:49:05,596 - === Looping through all cards ===
+2024-12-22 16:49:07,429 - === Track Found! Navigating to lyrics page ===
+2024-12-22 16:49:21,762 - === Loading Lyrics ===
+2024-12-22 16:49:21,762 - === Loading Lyrics for french language
+2024-12-22 16:49:21,849 - Translation not available for the lyrics
+2024-12-22 16:50:06,177 - === Starting Lyrics Scraper ===
+2024-12-22 16:50:06,179 - === Opening the Browser ===
+2024-12-22 16:50:16,543 - === Navigating to Musixmatch ===
+2024-12-22 16:50:36,359 - === Clicking on the 'See All' button ===
+2024-12-22 16:50:41,671 - === Finding Track Cards ===
+2024-12-22 16:50:41,753 - === Looping through all cards ===
+2024-12-22 16:50:42,524 - === Track Found! Navigating to lyrics page ===
+2024-12-22 16:50:46,445 - === Loading Lyrics ===
+2024-12-22 16:50:46,445 - === Lyrics language not specified ===
+2024-12-22 16:50:46,447 - === Loading default lyrics ===
+2024-12-22 16:50:51,449 - === Retrieving Lyrics ===
+2024-12-22 16:50:51,675 - === Lyrics Retrieved Successfully ===

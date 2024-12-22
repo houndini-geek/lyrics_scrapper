@@ -137,6 +137,13 @@ def scrape_lyrics(artist_name, track_name,lyrics_lang):
             print(Fore.GREEN + f"=== Loading Lyrics for {lyrics_lang} language")
             logging.info(f"=== Loading Lyrics for {lyrics_lang} language")
             translation_btn = browser.find_element(By.XPATH,value='//*[@id="__next"]/div/div/div/div[1]/div/div[1]/div[1]/div[2]/div/div/div[1]/div[1]/div[1]/div[2]/div[2]/div/div/div[2]/div[2]')
+            if translation_btn.text == 'Add translation':
+                # Translation not availble for the lyrics
+                print(Fore.RED + "Translation not available for the lyrics")
+                logging.info("Translation not available for the lyrics")
+                messagebox.showinfo(title="Error", message="Translation not available for the lyrics")
+                return
+            
             translation_btn.click()
             translation_card = browser.find_element(By.XPATH, value='//*[@id="__next"]/div/div/div/div[3]/div/div/div[3]/div/div/div[2]/div')
             input_language = translation_card.find_element(By.TAG_NAME, 'input')
@@ -174,23 +181,28 @@ def scrape_lyrics(artist_name, track_name,lyrics_lang):
         sleep(5)
         print(Fore.GREEN + "=== Retrieving Lyrics ===")
         logging.info("=== Retrieving Lyrics ===")
-      
-        # Wait until parent verse is loaded
-        parent_verse = wait.until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/div[1]/div/div[1]/div[1]/div[2]/div/div/div[2]/div')))
+        try:
+            # Wait until parent verse is loaded
+            parent_verse = wait.until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/div[1]/div/div[1]/div[1]/div[2]/div/div/div[2]/div')))
 
-        lyrics = {
-            "artist": artist_name,
-            "track": track_name,
-            "lyrics": parent_verse.text + '\n'
-        }   
-        print(Fore.GREEN + "=== Lyrics Retrieved Successfully ===")
-        logging.info("=== Lyrics Retrieved Successfully ===")
-        display_lyrics(lyrics)
-        print(Fore.LIGHTBLUE_EX + "=== Closing Browser ===")
-        logging.info("=== Closing Browser ===")
-      
-        browser.quit()
-        return lyrics  
+            lyrics = {
+                "artist": artist_name,
+                "track": track_name,
+                "lyrics": parent_verse.text + '\n'
+            }   
+            print(Fore.GREEN + "=== Lyrics Retrieved Successfully ===")
+            logging.info("=== Lyrics Retrieved Successfully ===")
+            display_lyrics(lyrics)
+            print(Fore.LIGHTBLUE_EX + "=== Closing Browser ===")
+            logging.info("=== Closing Browser ===")
+        
+            browser.quit()
+            return lyrics 
+        except NoSuchElementException:
+            print(Fore.RED + "Lyrics not found")
+            logging.info("Lyrics not found")
+            messagebox.showerror(title="Error", message="Lyrics not found!")
+            return 
     except NoSuchElementException:
         messagebox.showerror(
             title="Error",
