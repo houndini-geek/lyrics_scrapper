@@ -60,8 +60,8 @@ def fetch_data():
 
 
 # Window Configuration
-window.title('Lyrics Scraper')
-window.geometry('320x400')
+window.title('LyricsFusion')
+window.geometry('320x470')
 window.resizable(width=False, height=False)
 window.config(padx=10, pady=10, bg='#F8FAFC')
 
@@ -77,7 +77,7 @@ window.config(padx=10, pady=10, bg='#F8FAFC')
 
 # App Title
 app_name = Label(
-    text='🎵 Lyrics Scraper 🎵',
+    text='🎵 LyricsFusion 🎵',
     justify='center',
     bg='#F8FAFC',
     font=('Arial Baltic', 15, 'bold')
@@ -90,56 +90,57 @@ options_menu = Menu(menu_bar,tearoff=0)
 options_menu.add_command(label='Play on YouTube',command='play_track_on_yt')
 
 menu_bar.add_cascade(label='Options',menu=options_menu)
-
 # Artist Name Input
 artist_name_label = Label(window,
-                           text='Type the artist name *:', justify='left', 
+                           text='🎨 Who’s your favorite artist? Type their name below (required) 🎶:', 
+                           justify='left', 
+                           wraplength=300,  # Wrap text at 300px
                            pady=7,
                            bg='#F8FAFC',
-                           font=("Arial", 12))
+                           font=("Arial", 12, "italic"))
 artist_name_label.pack(anchor='w')
 artist_name = Entry(window,
                      width=70,
                      font=("Arial", 12),
                      highlightthickness=2,
                      borderwidth=0,
-                     highlightbackground = "#A888B5")
+                     highlightbackground="#A888B5")
 artist_name.pack(ipady=9)
 
 # Track Name Input
 track_name_label = Label(window, 
-                         text='Type the track name *:', 
+                         text='🎵 What track are you vibin’ to? Type the track name (required) 🎧:', 
                          justify='left',
+                         wraplength=300,  # Wrap text at 300px
                          pady=7,
                          bg='#F8FAFC',
-                         font=("Arial", 12)
-                         )
+                         font=("Arial", 12, "italic"))
 track_name_label.pack(anchor='w')
-tracks_name =Entry(window,
+tracks_name = Entry(window,
                      width=70,
                      font=("Arial", 12),
                      highlightthickness=2,
                      borderwidth=0,
-                     highlightbackground = "#A888B5")
+                     highlightbackground="#A888B5")
 tracks_name.pack(ipady=9)
-
 
 # Lyrics Language Input
 lyrics_language_label = Label(window, 
-      text='Translate lyrics to your preferred language (e.g., Spanish, French, etc.):', 
+      text='🎵 Ready to vibe? Translate lyrics to your favorite language (e.g., Spanish, French, etc.) 🎤:', 
       justify='left',
+      wraplength=300,  # Adjust this value to set the wrapping width
       pady=7,
       bg='#F8FAFC',
-      font=("Arial", 12)
+      font=("Arial", 12, "italic")
 )
 
 lyrics_language_label.pack(anchor='w')
-lyrics_language =Entry(window,
+lyrics_language = Entry(window,
                      width=70,
                      font=("Arial", 12),
                      highlightthickness=2,
                      borderwidth=0,
-                     highlightbackground = "#A888B5")
+                     highlightbackground="#A888B5")
 lyrics_language.pack(ipady=9)
 
 # Feedback Label
@@ -150,7 +151,7 @@ feedback_label.pack(pady=5)
 submit_btn = Button(
     window,
     text='Search for Lyrics',
-    width=25,
+    width=70,
     height=2,
     background='#474E93',
     foreground='#ffffff',
@@ -160,7 +161,7 @@ submit_btn = Button(
     activebackground='#8174A0',
     command=fetch_data
 )
-submit_btn.pack(pady=5)
+submit_btn.pack(pady=2)
 
 
 

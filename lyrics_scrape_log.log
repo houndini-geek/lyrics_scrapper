@@ -47,3 +47,19 @@ Check the spelling and try again.
 2024-12-22 17:12:01,859 - === Track Found! Navigating to lyrics page ===
 2024-12-22 17:12:07,237 - === Loading Lyrics ===
 2024-12-22 17:12:07,238 - === Loading Lyrics for french language
+2024-12-22 17:13:21,525 - === Starting Lyrics Scraper ===
+2024-12-22 17:13:21,564 - === Opening the Browser ===
+2024-12-22 17:13:23,838 - === Navigating to Musixmatch ===
+2024-12-22 17:13:36,442 - === Clicking on the 'See All' button ===
+2024-12-22 17:13:41,714 - === Finding Track Cards ===
+2024-12-22 17:13:41,792 - === Looping through all cards ===
+2024-12-22 17:13:42,764 - === Track Found! Navigating to lyrics page ===
+2024-12-22 17:13:48,982 - === Loading Lyrics ===
+2024-12-22 17:13:48,983 - === Loading Lyrics for french language
+2024-12-22 17:13:55,996 - === Retrieving Lyrics ===
+2024-12-22 17:13:56,196 - === Lyrics Retrieved Successfully ===
+2024-12-22 17:13:56,196 - === Lyrics retrieved successfully for: hit stick by kodak black
+2024-12-22 17:20:26,572 - === Closing Browser ===
+2024-12-22 17:20:33,306 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000028A7FE2E510>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/e1b2e8175010b7e6d42890c7104f2ff1
+2024-12-22 17:20:37,400 - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000028A7FE2F050>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/e1b2e8175010b7e6d42890c7104f2ff1
+2024-12-22 17:20:41,451 - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000028A7FE2F1D0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/e1b2e8175010b7e6d42890c7104f2ff1
