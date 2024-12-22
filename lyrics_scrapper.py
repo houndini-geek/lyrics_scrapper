@@ -3,7 +3,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-from selenium.common.exceptions import  NoSuchElementException, WebDriverException, TimeoutException, NoSuchWindowException
+
 from fuzzywuzzy import fuzz
 
 from tkinter import messagebox
@@ -35,6 +35,7 @@ def scrape_lyrics(artist_name, track_name,lyrics_lang):
         NoSuchElementException,
         TimeoutException,
         WebDriverException,
+        NoSuchWindowException
     )
     from selenium.webdriver.support.ui import WebDriverWait
     from selenium.webdriver.support import expected_conditions as EC
