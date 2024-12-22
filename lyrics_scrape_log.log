@@ -20,3 +20,30 @@
 2024-12-22 16:50:46,447 - === Loading default lyrics ===
 2024-12-22 16:50:51,449 - === Retrieving Lyrics ===
 2024-12-22 16:50:51,675 - === Lyrics Retrieved Successfully ===
+2024-12-22 17:07:22,003 - === Starting Lyrics Scraper ===
+2024-12-22 17:07:22,202 - === Opening the Browser ===
+2024-12-22 17:07:38,283 - === Navigating to Musixmatch ===
+2024-12-22 17:08:25,588 - === Clicking on the 'See All' button ===
+2024-12-22 17:08:30,876 - === Finding Track Cards ===
+2024-12-22 17:08:30,928 - === Looping through all cards ===
+2024-12-22 17:08:31,845 - === Track not found ===
+2024-12-22 17:08:41,949 - Couldn't find lyrics for the track: tunnel vision
+Check the spelling and try again.
+2024-12-22 17:09:12,197 - === Starting Lyrics Scraper ===
+2024-12-22 17:09:12,198 - === Opening the Browser ===
+2024-12-22 17:09:15,129 - === Navigating to Musixmatch ===
+2024-12-22 17:09:28,812 - === Clicking on the 'See All' button ===
+2024-12-22 17:09:34,124 - === Finding Track Cards ===
+2024-12-22 17:09:34,177 - === Looping through all cards ===
+2024-12-22 17:09:35,065 - === Track not found ===
+2024-12-22 17:10:06,419 - Couldn't find lyrics for the track: tunnel vision
+Check the spelling and try again.
+2024-12-22 17:11:25,565 - === Starting Lyrics Scraper ===
+2024-12-22 17:11:25,673 - === Opening the Browser ===
+2024-12-22 17:11:31,822 - === Navigating to Musixmatch ===
+2024-12-22 17:11:55,826 - === Clicking on the 'See All' button ===
+2024-12-22 17:12:01,106 - === Finding Track Cards ===
+2024-12-22 17:12:01,179 - === Looping through all cards ===
+2024-12-22 17:12:01,859 - === Track Found! Navigating to lyrics page ===
+2024-12-22 17:12:07,237 - === Loading Lyrics ===
+2024-12-22 17:12:07,238 - === Loading Lyrics for french language

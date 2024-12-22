@@ -126,12 +126,13 @@ tracks_name.pack(ipady=9)
 
 # Lyrics Language Input
 lyrics_language_label = Label(window, 
-                         text='Translate lyrics to (Enter the language)*:', 
-                         justify='left',
-                         pady=7,
-                         bg='#F8FAFC',
-                         font=("Arial", 12)
-                         )
+      text='Translate lyrics to your preferred language (e.g., Spanish, French, etc.):', 
+      justify='left',
+      pady=7,
+      bg='#F8FAFC',
+      font=("Arial", 12)
+)
+
 lyrics_language_label.pack(anchor='w')
 lyrics_language =Entry(window,
                      width=70,

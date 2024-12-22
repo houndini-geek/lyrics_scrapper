@@ -15,6 +15,13 @@ from lyrics_windows import display_lyrics
 import logging
 
 
+def setup_logging():
+    """Set up logging with fresh logs for every new search."""
+    # Clear the log file by opening it in write mode ('w') at the start
+    with open('lyrics_scraper_log.log', 'w'):
+        pass  # This clears the content of the file
+setup_logging()
+
 # Configure logging
 logging.basicConfig(
     filename='lyrics_scrape_log.log',
@@ -28,6 +35,7 @@ def is_match(scraped_name, input_name, threshold=70):
     return fuzz.partial_ratio(scraped_name, input_name) > threshold
 
 def scrape_lyrics(artist_name, track_name,lyrics_lang):
+   
     logging.info("=== Starting Lyrics Scraper ===")
     from colorama import Fore
     from tkinter import messagebox
@@ -192,6 +200,7 @@ def scrape_lyrics(artist_name, track_name,lyrics_lang):
             }   
             print(Fore.GREEN + "=== Lyrics Retrieved Successfully ===")
             logging.info("=== Lyrics Retrieved Successfully ===")
+            logging.info(f"=== Lyrics retrieved successfully for: {track_name} by {artist_name}")
             display_lyrics(lyrics)
             print(Fore.LIGHTBLUE_EX + "=== Closing Browser ===")
             logging.info("=== Closing Browser ===")
@@ -214,3 +223,4 @@ def scrape_lyrics(artist_name, track_name,lyrics_lang):
     finally:
         if browser:
             browser.quit()
+
