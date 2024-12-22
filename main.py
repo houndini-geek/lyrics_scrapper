@@ -3,7 +3,7 @@ from lyrics_scrapper import scrape_lyrics
 from threading import Thread
 import requests
 # import pywhatkit 
-import time
+import time 
 
 
 def internet_connection():
@@ -20,6 +20,7 @@ window = Tk()
 def fetch_data():
     artist = artist_name.get().strip().lower()
     track = tracks_name.get().strip().lower()
+    translation = lyrics_language.get().strip().lower()
    
     if not artist:
         feedback_label.config(text='Artist name is required!', foreground='red')
@@ -38,29 +39,25 @@ def fetch_data():
                 feedback_label.config(text=f"Searching{'.' * (i + 1)}")
                 time.sleep(0.5)
             if internet_connection():
-             scrape_lyrics(artist_name=artist, track_name=track)
+             scrape_lyrics(artist_name=artist, track_name=track, lyrics_lang=translation)
             else:
-               messagebox.showwarning(title='Network error',message='A network connection is required !')
-               feedback_label.config(text='No internet connection')
+               messagebox.showwarning(title='Network error',message='Lyrics scraper needs a network connection to work')
+               feedback_label.config(text='No network connection')
+               print("Lyrics scraper needs a network connection to work")
                return
         finally:
-            submit_btn.config(state='normal')
+            submit_btn.after(0,submit_btn.config(state='normal'))
 
     thread = Thread(target=search)
     thread.start()
 
 
 
-# Function to reset form
-def enable_submit():
-    artist_name.delete(0, 'end')
-    tracks_name.delete(0, 'end')
-    feedback_label.config(text='', foreground='black')
-    submit_btn.config(state='normal')
+
 
 # Window Configuration
 window.title('Lyrics Scraper')
-window.geometry('320x300')
+window.geometry('320x400')
 window.resizable(width=False, height=False)
 window.config(padx=10, pady=10, bg='#F8FAFC')
 
@@ -99,6 +96,7 @@ artist_name_label = Label(window,
 artist_name_label.pack(anchor='w')
 artist_name = Entry(window,
                      width=70,
+                     font=("Arial", 12),
                      highlightthickness=2,
                      borderwidth=0,
                      highlightbackground = "#A888B5")
@@ -115,10 +113,29 @@ track_name_label = Label(window,
 track_name_label.pack(anchor='w')
 tracks_name =Entry(window,
                      width=70,
+                     font=("Arial", 12),
                      highlightthickness=2,
                      borderwidth=0,
                      highlightbackground = "#A888B5")
 tracks_name.pack(ipady=9)
+
+
+# Lyrics Language Input
+lyrics_language_label = Label(window, 
+                         text='Translate lyrics to (Enter the language)*:', 
+                         justify='left',
+                         pady=7,
+                         bg='#F8FAFC',
+                         font=("Arial", 12)
+                         )
+lyrics_language_label.pack(anchor='w')
+lyrics_language =Entry(window,
+                     width=70,
+                     font=("Arial", 12),
+                     highlightthickness=2,
+                     borderwidth=0,
+                     highlightbackground = "#A888B5")
+lyrics_language.pack(ipady=9)
 
 # Feedback Label
 feedback_label = Label(window, text='', font=("Arial", 10),bg='#F8FAFC')
@@ -140,17 +157,7 @@ submit_btn = Button(
 )
 submit_btn.pack(pady=5)
 
-# Enable Submit Button
-enable_submit_btn = Button(
-    window,
-    text='Search Again',
-    height=2,
-    background='#ffffff',
-    foreground='#212121',
-    border='0',
-    command=enable_submit
-)
-enable_submit_btn.pack()
+
 
 window.config(menu=menu_bar)
 window.mainloop()

@@ -1,5 +1,12 @@
-from tkinter import Tk, ttk, Menu, Text,Frame,filedialog
-import os 
+from tkinter import Tk, ttk, Menu, Text, Frame, filedialog
+import os
+
+folder_path = os.path.join(os.path.expanduser('~'), 'documents', 'scrapped_lyrics')
+
+def save_folder_path():
+    if not os.path.exists(folder_path):
+        os.mkdir(folder_path)
+
 
 
 # lyrics= {
@@ -35,16 +42,20 @@ def display_lyrics(lyrics):
     textarea = Text(frame, wrap="word", yscrollcommand=scrollbar.set, autoseparators=True)
     textarea.insert('1.0',lyrics['lyrics'])
 
-    textarea.config(bg="#030c14", foreground='#F1F1F1',
+    textarea.config(bg="#FFFFFF", foreground='#262626',
                     font=('Franklin Gothic Medium', 13),
                     insertbackground='#C1C1C1',padx=4,pady=4)
     textarea.pack(expand=True, fill='both',side='top')
 
     scrollbar.config(command=textarea.yview)
+    save_folder_path()
     def save_lyrics():
         path = filedialog.asksaveasfilename(title='Save lyrics',
-                                            defaultextension='.txt',
-                                            initialfile=f'{lyrics['artist']}_{lyrics['track']}_lyrics')
+        defaultextension='.txt',
+        initialfile=f'{lyrics['artist']}_{lyrics['track']}_lyrics',
+        initialdir=folder_path
+        )
+
         if not path:
             return
         with open(path,'w') as file:
@@ -52,4 +63,4 @@ def display_lyrics(lyrics):
 
     root.config(menu=menu_bar)
     root.mainloop()
-
+# display_lyrics(lyrics)

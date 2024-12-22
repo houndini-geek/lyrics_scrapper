@@ -1,4 +1,3 @@
-
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
@@ -13,7 +12,7 @@ from time  import sleep
 
 from lyrics_windows import display_lyrics
 
-from colorama import Fore
+
 
 
 
@@ -21,7 +20,8 @@ def is_match(scraped_name, input_name, threshold=70):
     # Check if similarity is above the threshold
     return fuzz.partial_ratio(scraped_name, input_name) > threshold
 
-def scrape_lyrics(artist_name, track_name):
+def scrape_lyrics(artist_name, track_name,lyrics_lang):
+    from colorama import Fore
     browser = None
     try:
         print(Fore.GREEN + "=== Opening the Browser ===")
@@ -91,20 +91,68 @@ def scrape_lyrics(artist_name, track_name):
 
     try:
         print(Fore.GREEN + "=== Loading Lyrics ===")
-        parent_verse = browser.find_element(By.XPATH, value='/html/body/div[1]/div/div/div/div[1]/div/div[1]/div[1]/div[2]/div/div/div[2]/div')
+        if lyrics_lang:
+          try:
+            print(Fore.GREEN + f"=== Loading Lyrics for {lyrics_lang} language")
+            translation_btn = browser.find_element(By.XPATH,value='//*[@id="__next"]/div/div/div/div[1]/div/div[1]/div[1]/div[2]/div/div/div[1]/div[1]/div[1]/div[2]/div[2]/div/div/div[2]/div[2]')
+            translation_btn.click()
+            translation_card = browser.find_element(By.XPATH, value='//*[@id="__next"]/div/div/div/div[3]/div/div/div[3]/div/div/div[2]/div')
+            input_language = translation_card.find_element(By.TAG_NAME, 'input')
+            input_language.send_keys(lyrics_lang)
+            lang_card = translation_card.find_element(By.CSS_SELECTOR, value='.r-1h0z5md')
+            if lang_card:
+                lang_card.click()
+            else:
+                print('Lang card not found')
+          except NoSuchElementException:
+            print(Fore.RED + "Lyrics language not found")
+            # Prompt user to load the default lyrics language if the specified language not found
+            response = messagebox.askokcancel(title="Error", message="Lyrics language not found. Load default lyrics?")
+            if response:
+                print(Fore.GREEN + "=== Loading default lyrics ===")
+            else:
+                # Close the browser if the user doesn't want to load the default lyrics
+                print(Fore.RED + "=== Closing Browser ===")
+                browser.quit()
+                return
+
+        else:
+            print(Fore.GREEN + "=== Lyrics language not specified ===")
+            print(Fore.GREEN + "=== Loading default lyrics ===")
+        sleep(5)
+        print(Fore.GREEN + "=== Retrieving Lyrics ===")
+        # Wait until parent verse is loaded
+        parent_verse = wait.until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div/div/div/div[1]/div/div[1]/div[1]/div[2]/div/div/div[2]/div')))
+
         lyrics = {
             "artist": artist_name,
             "track": track_name,
             "lyrics": parent_verse.text + '\n'
-        }
+        }   
         print(Fore.GREEN + "=== Lyrics Retrieved Successfully ===")
         display_lyrics(lyrics)
         print(Fore.LIGHTBLUE_EX + "=== Closing Browser ===")
+        browser.quit()
+        return
+    
+      
+        # parent_verse = browser.find_element(By.XPATH, value='/html/body/div[1]/div/div/div/div[1]/div/div[1]/div[1]/div[2]/div/div/div[2]/div')
+        # lyrics = {
+        #     "artist": artist_name,
+        #     "track": track_name,
+           
+        #     "lyrics": parent_verse.text + '\n'
+        #  }
+        # print(Fore.GREEN + "=== Lyrics Retrieved     Successfully ===")
+        # display_lyrics(lyrics)
+        # print(Fore.LIGHTBLUE_EX + "=== Closing Browser ===")
       
     except NoSuchElementException:
         messagebox.showerror(
             title="Error",
             message=f"Failed to retrieve lyrics for: {track_name} by {artist_name}"
         )
-    browser.quit()
-  
+    # finally:
+    #  if browser:
+    #   input('type enter to quite:')
+    #   browser.quit()
